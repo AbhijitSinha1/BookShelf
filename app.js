@@ -21,7 +21,7 @@ app.disable('x-powered-by');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', process.env.PORT ||  ||3000);
+app.set('port', process.env.PORT || 3000);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
