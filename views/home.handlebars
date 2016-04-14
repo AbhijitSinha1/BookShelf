@@ -2,6 +2,7 @@
 <script src="javascripts/entities/InetJob.js"></script>
 <script src="javascripts/utils/EventHandler.js"></script>
 <script src="javascripts/utils/Event.js"></script>
+<script src="javascripts/utils/settings.js"></scripts>
 <div class="page-header">
 	<div class="row">
 		<div class="col-md-12">
@@ -84,10 +85,10 @@
 	}));
 	
 	var autofill = function(text) {
-		CommService.get(new InetJob('http://localhost:3000/autofill?word='+text, autofillSuccess, autofillFailure));
+		CommService.get(new InetJob('http://52.37.37.193/autofill?word='+text, autofillSuccess, autofillFailure));
 	}
 	
 	var search = function(text) {
-		CommService.get(new InetJob('http://localhost:3000/search?query='+text+'&location=Kochi', searchSuccess, searchFailure));
+		CommService.get(new InetJob('http://52.37.37.193/search?query='+text+'&location=Kochi', searchSuccess, searchFailure));
 	}
 </script>
