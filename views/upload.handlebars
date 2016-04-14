@@ -2,6 +2,8 @@
 <script src="/javascripts/utils/EventHandler.js"></script>
 <script src="javascripts/services/CommService.js"></script>
 <script src="javascripts/entities/InetJob.js"></script>
+<script src="javascripts/utils/settings.js"></script>
+
 <div class="page-header">
 	<h3>Upload</h3>
 	<hr/>
@@ -108,7 +110,9 @@ var sendData = function(fields) {
 	var failure = function(data) {
 		console.error(data);
 	}
-	CommService.post(new InetJob('http://localhost:3000/uploadBook', success, failure), JSON.stringify(fields));
+	//CommService.post(new InetJob('http://localhost:3000/uploadBook', success, failure), JSON.stringify(fields));
+	CommmService.post(new InetJob(settings.IP+':'+settings.port+'/uploadBook', success, failure), JSON.stringify(fields));
+
 }
 
 var clear = function() {
