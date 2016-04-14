@@ -1,0 +1,31 @@
+{
+	"query": "Book Name",
+	"location": "Chennai, Tamil Nadu"
+	"result": [
+		{
+			"name": "Shekhar",
+			"img": "../images/placeholder.png",
+			"review": "Short summary of the book by this user"
+		}, {
+			"name": "Abhijit",
+			"img": "../images/placeholder.png",
+			"review": "Short summary of the book by this user"
+		}, {
+			"name": "Manoj",
+			"img": "../images/placeholder.png",
+			"review": "Short summary of the book by this user"
+		}, {
+			"name": "Prem",
+			"img": "../images/placeholder.png",
+			"review": "Short summary of the book by this user"
+		}, {
+			"name": "Dinesh",
+			"img": "../images/placeholder.png",
+			"review": "Short summary of the book by this user"
+		}, {
+			"name": "Rabi",
+			"img": "../images/placeholder.png",
+			"review": "Short summary of the book by this user"
+		}
+	]
+}

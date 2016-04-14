@@ -1,0 +1,123 @@
+<script src="/javascripts/utils/Event.js"></script>
+<script src="/javascripts/utils/EventHandler.js"></script>
+<script src="javascripts/services/CommService.js"></script>
+<script src="javascripts/entities/InetJob.js"></script>
+<div class="page-header">
+	<h3>Upload</h3>
+	<hr/>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-sm-4">
+					<label class="pull-right">Title</label>
+				</div>
+				<div class="col-sm-4">
+					<input class="form-control inp" id="title"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<label class="pull-right">Author(s)</label>
+				</div>
+				<div class="col-sm-4">
+					<input class="form-control inp" id="authors"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<label class="pull-right">ISBN</label>
+				</div>
+				<div class="col-sm-4">
+					<input class="form-control inp" id="isbn"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<label class="pull-right">Genre</label>
+				</div>
+				<div class="col-sm-4">
+					<input class="form-control inp" id="genre"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<label class="pull-right">Personal Review</label>
+				</div>
+				<div class="col-sm-4">
+					<textarea class="form-control inp" id="review"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<label>Upload Image/Search online</label>
+			<input type="file" onchange="previewFile()"><br>
+			<img src="/images/book-icon.png" height="200" id="cover">
+		</div>
+	</div>
+	<br/>
+	<div class="row">
+		<div class="col-sm-2 col-sm-offset-4">
+			<button class="form-control btn btn-success" id="submit">Submit</button>
+		</div>
+		<div class="col-sm-2">
+			<button class="form-control btn btn-danger" id="clear">Clear</button>
+		</div>
+	</div>
+</div>
+<script>
+var previewFile = function() {
+   var preview = document.querySelector('#cover'); //selects the query named img
+   var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+   var reader  = new FileReader();
+
+   reader.onloadend = function () {
+	   preview.src = reader.result;
+   }
+
+   if (file) {
+	   reader.readAsDataURL(file); //reads the data as a URL
+   } else {
+	   preview.src = "/images/book-icon.png";
+   }
+}
+
+EH.registerEvent(new Event('clear', 'click', function(event) {
+	clear();
+}));
+
+EH.registerEvent(new Event('submit', 'click', function(event) {
+	submit();
+}));
+
+var submit = function() {
+	var fields = {
+		title: document.querySelector('#title').value,
+		authors: document.querySelector('#authors').value.split(/[;,]+/),
+		isbn: document.querySelector('#isbn').value,
+		genre: document.querySelector('#genre').value,
+		review: document.querySelector('#review').value,
+	};
+	sendData(fields);
+}
+
+var sendData = function(fields) {
+	console.log(JSON.stringify(fields));
+	var success = function(data) {
+		console.log(data);
+	}
+	var failure = function(data) {
+		console.error(data);
+	}
+	CommService.post(new InetJob('http://localhost:3000/uploadBook', success, failure), JSON.stringify(fields));
+}
+
+var clear = function() {
+	var inputs = document.querySelectorAll('.inp');
+	for(var i = 0; i < inputs.length; i++) {
+		inputs[i].value = '';
+	}
+	document.querySelector('#cover').src = "/images/book-icon.png";
+	
+}
+previewFile();  //calls the function named previewFile()
+</script>

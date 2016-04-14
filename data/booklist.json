@@ -1,0 +1,77 @@
+{
+	"id": 1,
+	"books": [
+		{
+			"id": 123,
+			"isbn": "1234567889"
+			"name": "Rich Dad Poor Dad",
+			"author": "Levitt", 
+			"genre": "self help"
+			"rating": 4.5, 
+			"condition": "good", 
+			"status": "UNLOCKED",
+			"imageUrl": "https://www.richdadworld.com/assets/images/rich_dad_poor_dad_book_medium.jpg",
+			"blurb": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum dictum lorem, quis dictum tortor."
+		},
+		{
+			"id": 124,
+			"isbn": "1234567890"
+			"name": "Immortals of Meluha",
+			"author": "Levitt", 
+			"genre": "fictian/fantacy", 
+			"rating": 4.5, 
+			"condition": "good", 
+			"status": "UNLOCKED",
+			"imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/0e/The_Immortals_Of_Meluha.jpg",
+			"blurb": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum dictum lorem, quis dictum tortor."
+		},
+		{
+			"id": 125,
+			"isbn": "1234567891"
+			"name": "Freakonomics", 
+			"author": "Levitt", 
+			"genre": "economics", 
+			"rating": 4.5, 
+			"condition": "good", 
+			"status": "UNLOCKED",
+			"imageUrl": "https://ssnpustak.files.wordpress.com/2015/02/freakonomics.jpg";
+			"blurb": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum dictum lorem, quis dictum tortor."
+		},
+		{
+			"id": 126,
+			"isbn": "1234567892"
+			"name": "Chanakya's Chant",
+			"author": "Levitt", 
+			"genre": "fiction/ strategy", 
+			"rating": 4.5, 
+			"condition": "good", 
+			"status": "UNLOCKED",
+			"imageUrl": "http://upload.wikimedia.org/wikipedia/en/1/10/Chanakya%2527s_Chant.jpg",
+			"blurb": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum dictum lorem, quis dictum tortor."
+		},
+		{
+			"id": 127,
+			"isbn": "1234567893"
+			"name": "Krishna's Key",
+			"author": "Levitt", 
+			"genre": "fiction", 
+			"rating": 4.5, 
+			"condition": "good", 
+			"status": "UNLOCKED",
+			"imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/65/The_Krishna_Key_Cover_Art.jpg",
+			"blurb": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum dictum lorem, quis dictum tortor."
+		},
+		{
+			"id": 128,
+			"isbn": "1234567894"
+			"name": "How to Win Friends and Influence People",
+			"author": "Levitt", 
+			"genre": "self help", 
+			"rating": 4.5, 
+			"condition": "good", 
+			"status": "UNLOCKED",
+			"imageUrl": "http://self-improvement-ebooks.com/books/htwfaip.jpg",
+			"blurb": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum dictum lorem, quis dictum tortor."
+		}
+	]
+}

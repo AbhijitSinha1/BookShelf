@@ -1,0 +1,11 @@
+{
+	"status": true,
+	"message": "success",
+	"userInfo": {
+		"id": 1,
+		"email": "mishra.prateek007@gmail.com",
+		"firstName": "Prateek",
+		"lastName": "Mishra",
+		"location": "Kochi"
+	}
+}

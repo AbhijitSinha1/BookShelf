@@ -1,0 +1,10 @@
+{
+	"key": {
+		"value": "key",
+		"type": "String"
+	},
+	"value": {
+		"value": "value",
+		"type": "Integer"
+	}
+}

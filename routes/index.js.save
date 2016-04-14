@@ -1,0 +1,72 @@
+var express = require('express');
+var Book = require('../schema/Book');
+var fs = require('fs');
+var path = require('path');
+var router = express.Router();
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('home', {
+	  title: 'Search',
+	  searchButton: 'active',
+	  aboutButton: '',
+	  contactButton: '',
+	  uploadButton: ''
+	  });
+});
+
+/*GET search results*/
+router.get('/search',function(req, res, next) {
+	var query = req.query.query;
+	var location = req.query.location;
+	var file = path.join(__dirname,'../data/searchResult.json');
+	fs.readFile(file, 'utf8', function (err,data) {
+	  if (err) {
+		return next(new Error('data not found: '+err.message));
+	  }
+	  res.send(data);
+	});
+});
+
+/* GET about page. */
+router.get('/about',function(req, res, next) {
+    res.render('about',{
+		title: 'About',
+		searchButton: '',
+		aboutButton: 'active',
+		contactButton: '',
+		uploadButton: ''
+	});
+});
+
+/* GET upload page. */
+router.get('/upload',function(req, res, next) {
+    res.render('upload',{
+		title: 'Upload',
+		searchButton: '',
+		aboutButton: '',
+		contactButton: '',
+		uploadButton: 'active'
+	});
+});
+
+/* POST upload page. */
+router.post('/uploadBook',function(req, res, next) {
+	console.log(req.body);
+	var book = new Book(req.body);
+	book.save(function(err, obj) {
+		if(err) {
+			else {
+			console.log('saved');
+		}
+	});
+//  res.render('upload',{
+//    title: 'Upload',
+//    searchButton: '',
+//    aboutButton: '',
+//    contactButton: '',
+//    uploadButton: 'active'
+//  });
+});
+
+module.exports = router;

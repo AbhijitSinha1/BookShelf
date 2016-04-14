@@ -1,0 +1,21 @@
+{
+	"status": true,
+	"message": "success",
+	"notifications": [{
+		"id": 1,
+		"subject": "Welcome",
+		"body":"Welcome to our Book Sharing System"
+	},{
+		"id": 2,
+		"subject": "Useful Info",
+		"body":"You can check all your notifications here"
+	},{
+		"id": 3,
+		"subject": "Reminder",
+		"body": "Be sure to keep coming back to this place"
+	},{
+		"id": 4,
+		"subject": "Best Wishes",
+		"body": "Keep Reading"
+	}]
+}

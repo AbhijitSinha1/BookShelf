@@ -1,0 +1,12 @@
+{
+	"id": 125,
+	"isbn": "1234567890"
+	"name": "Freakonomics", 
+	"author": "Levitt", 
+	"genre": "economics", 
+	"rating": 4.5, 
+	"condition": "good", 
+	"status": "UNLOCKED",
+	"imageUrl": "https://ssnpustak.files.wordpress.com/2015/02/freakonomics.jpg";
+	"blurb": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum dictum lorem, quis dictum tortor."
+}

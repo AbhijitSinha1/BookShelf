@@ -1,0 +1,93 @@
+<script src="javascripts/services/CommService.js"></script>
+<script src="javascripts/entities/InetJob.js"></script>
+<script src="javascripts/utils/EventHandler.js"></script>
+<script src="javascripts/utils/Event.js"></script>
+<div class="page-header">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="well">
+				<h4>Book Search</h4>
+				<div class="input-group">
+					<input type="text" class="form-control" id="query">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" id="search">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</span>
+				</div>
+				<hr/>
+				<div class="row" id="results">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="searchResultHeader" style="display: none;"><h1 class="page-header"><span id = "searchResultHeaderBookName"></span>&nbsp;<small id = "searchResultHeaderLocation"></small></h1></div>
+			<div class="row" id = "searchResultBody" style="display: none;">
+			<ul class="pager" style="display: none;">
+				<li class="previous">
+					<a href="#">&larr; Older</a>
+				</li>
+				<li class="next">
+					<a href="#">Newer &rarr;</a>
+				</li>
+			</ul>
+		</div>
+	</div>	
+</div>
+<script>
+	var searchSuccess = function(dummyResult) {
+		var results = dummyResult.userList.map(function(user) {
+			return '<div class="col-lg-4 col-sm-6 text-center"><img class="img-circle img-center" src="/images/'+user.imageLocation+'" alt=""><h3>'+user.name+'</h3><p><b>User Review: </b>'+user.bookReview+'</p></div>';
+		}).reduce(function(a, b) {return a + b;});
+		$('#searchResultHeaderBookName').text(dummyResult.bookName);
+		$('#searchResultHeaderLocation').text(dummyResult.location);
+		$('#searchResultBody').html(results);
+		$('#searchResultBody').attr('style', 'display: block');
+		$('#searchResultHeader').attr('style', 'display: block');
+	};
+	
+	var searchFailure = function(message) {
+		console.error(message);
+	};
+
+	var autofillSuccess = function(books) {
+		document.querySelector('#results').innerHTML = books.length > 0 ? books.map(function(book) {
+			return '<div class="col-sm-3 col-lg-3 col-md-4"><div class="thumbnail"><img width="120" height="120" src="'+book.imageUrl+'" alt=""><div class="caption"><h4 class="pull-right">'+book.isbn+'</h4><h4><a href="#" onclick="setQuery(this)">'+book.title+'</a></h4><p>'+book.authors+'</p></div></div></div>';
+		}).reduce(function(a, b) {
+			return a+b;
+		}) : '';
+	}
+
+	var setQuery = function(title) {
+		document.querySelector('#query').value = title.innerHTML;
+		autofill(title.innerHTML);
+		search(title.innerHTML);
+	}
+
+	var autofillFailure = function(result) {
+		console.error(result);
+	}
+
+	EH.registerEvent(new Event('query', 'keyup', function(key) {
+		var word = document.querySelector('#query').value;
+		if(key.keyCode === 13) {
+			search(word);
+		} else {
+			autofill(word);
+		}
+	}));
+
+	EH.registerEvent(new Event('search', 'click', function(key) {
+		search(document.querySelector('#query').value);
+	}));
+	
+	var autofill = function(text) {
+		CommService.get(new InetJob('http://localhost:3000/autofill?word='+text, autofillSuccess, autofillFailure));
+	}
+	
+	var search = function(text) {
+		CommService.get(new InetJob('http://localhost:3000/search?query='+text+'&location=Kochi', searchSuccess, searchFailure));
+	}
+</script>
