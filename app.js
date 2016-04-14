@@ -8,9 +8,11 @@ var handlebars = require('express-handlebars').create({defaultLayout: 'main'});
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var mongoose = require('mongoose');
+var fs = require('fs');
 mongoose.connect('mongodb://localhost/bookshelf');
 
 var app = express();
+// var settings = path.join(__dirname,'settings.json');
 
 // to disable the header containing the information about the server
 app.disable('x-powered-by');
@@ -19,7 +21,7 @@ app.disable('x-powered-by');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT ||  ||3000);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
